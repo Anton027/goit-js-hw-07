@@ -26,7 +26,9 @@ function onGalleryItemClick(event) {
             return;
         }
     if(event.target.nodeName === "IMG"){
-        var lightbox = new SimpleLightbox('.gallery a', { event });
+        new SimpleLightbox('.gallery a', { 
+            captionData:'alt', captionDelay:250 
+        });
     }
 }
 
