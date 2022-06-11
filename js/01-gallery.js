@@ -26,23 +26,33 @@ let instence = {};
 function onGalleryItemClick(event) {
     
     event.preventDefault();
-    if(event.target.nodeName !== "IMG") {
+    if (event.target.nodeName !== "IMG") {
         return;
     }
-    if(event.target.nodeName === "IMG"){
-    instence = basicLightbox.create(
-        `<img src="${event.target.dataset.source}" width="800" height="600" />`
-    )
-    instence.show();
-    };
-    window.addEventListener('keydown', onCloseModal);
-};
-function onCloseModal(event) {
-    if(event.code === 'Escape') {
-        
-        instence.close();
-        window.removeEventListener('keydown', onCloseModal);
+    if (event.target.nodeName === "IMG") {
+        instence = basicLightbox.create(
+            `<img src="${event.target.dataset.source}" width="800" height="600" />`,
+        )
+        instence.show();
     };
 }
+window.addEventListener('keydown', onCloseModal);
+function onCloseModal(event) {
+    if (event.code === 'Escape') {
+        instence.close();
+    }
+}
+
 
 console.log(galleryItems);
+
+	// const instance = basicLightbox.create(html, {
+	// 	onShow: (instance) => console.log('onShow', instance),
+	// 	onClose: (instance) => console.log('onClose', instance)
+	// })
+
+	// instance.show((instance) => console.log('finished show()', instance))
+
+	// setTimeout(() => {
+	// 	instance.close((instance) => console.log('finished close()', instance))
+	// }, 3000)
