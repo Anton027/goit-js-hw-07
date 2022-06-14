@@ -32,11 +32,15 @@ function onGalleryItemClick(event) {
     if (event.target.nodeName === "IMG") {
         instence = basicLightbox.create(
             `<img src="${event.target.dataset.source}" width="800" height="600" />`,
+            {
+                onShow: () => window.addEventListener('keydown', onCloseModal),
+                onClose: () => window.removeEventListener('keydown', onCloseModal)
+            }
         )
         instence.show();
     };
 }
-window.addEventListener('keydown', onCloseModal);
+
 function onCloseModal(event) {
     if (event.code === 'Escape') {
         instence.close();
